@@ -24,3 +24,4 @@ jobs:
         url: https://stg.insightfinder.com/customprojectrawdata
         # JSON string of data to pass into request
         data: "{\"projectName\":\"GTF3-Incident\", \"userName\":\"caiTest\",\"metricData\":[{\"instanceName\":\"sys-gt1-prod.nam.nsroot.net\",\"timestamp\":1650298396701,\"data\":\"Canary Failed. Failure to access or login\"}], \"agentType\" : \"LogStreaming\", \"licenseKey\":\"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685\"}"
+        header: "{\"agent-type\":\"Stream\"}"
