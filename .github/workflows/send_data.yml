@@ -17,6 +17,7 @@ jobs:
       - name: Logging
         run: |
           echo "${{toJSON(github.event)}}"
+          echo "${{github.event.commits[0].message}}"
           
   # This workflow contains a single job called "build"
   curl:
