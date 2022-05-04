@@ -21,5 +21,5 @@ jobs:
         # URL to send post request to
         url: https://stg.insightfinder.com/api/v1/deploymentEventReceive
         # JSON string of data to pass into request
-        data: '{"projectName":"git-action-test","userName":"caiTest","licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685","deploymentData":[{"instanceName":"TEST", "timestamp": "${{github.event.pushed_at}}000", "data":"${{github.event.head_commit.message}}"}]}'
+        data: '{"projectName":"git-action-test","userName":"caiTest", "licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685","deploymentData":[{"instanceName":"TEST", "timestamp": "${{github.event.pushed_at}}000", "data":"${{github.event.head_commit.message}}"}]}'
         headers: '{"agent-type":"Stream"}'
