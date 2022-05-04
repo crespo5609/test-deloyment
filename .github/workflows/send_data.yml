@@ -16,9 +16,7 @@ jobs:
     steps:
       - name: Logging
         run: |
-          echo "${{toJson(github.event.pull_request.head)}}"
-          echo "${{github.event.pull_request.head.title}}"
-          echo "${{github.event.pull_request.head.pushed_at}}"
+          echo "${{toJson(github.event)}}"
   
   # This workflow contains a single job called "build"
   curl:
@@ -31,9 +29,5 @@ jobs:
         # URL to send post request to
         url: https://stg.insightfinder.com/api/v1/deploymentEventReceive
         # JSON string of data to pass into request
-        data: |
-          '{"projectName":"git-action-test",
-          "userName":"caiTest",
-          "licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685",
-          "deploymentData":[{"instanceName":"TEST", "timestamp": "${{github.event.pull_request.pushed_at}}000", "data":"${{github.event.pull_request.title}}"}]}'
+        data: '{"projectName":"git-action-test","userName":"caiTest","licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685","deploymentData":[{"instanceName":"TEST", "timestamp": 1651700574895, "data":"${{github.event.pull_request.title}}"}]}'
         headers: '{"agent-type":"Stream"}'
