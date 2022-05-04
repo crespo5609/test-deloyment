@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Logging
         run: |
-          echo "${{toJSON(github.event.commits[0])}}"
+          echo "${{fromJSON(toJSON(github.event.commits[0]))}}"
           
   # This workflow contains a single job called "build"
   curl:
