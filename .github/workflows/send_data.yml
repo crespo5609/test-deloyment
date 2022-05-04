@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Logging
         run: |
-          echo "${{github.event}}"
+          echo "${{fromJson(github.event)}}"
   
   # This workflow contains a single job called "build"
   curl:
@@ -33,10 +33,5 @@ jobs:
           '{"projectName":"git-action-test",
             "userName":"caiTest", 
             "licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685",
-            "deploymentData":
-              [{
-                "instanceName":"TEST", 
-                "timestamp": "${{github.event.repository.pushed_at}}000", 
-                "data":"${{github.event.head_commit.message}}"
-              }]}'
+            "deploymentData":[{"instanceName":"TEST", "timestamp": "${{github.event.repository.pushed_at}}000", "data":"${{github.event.head_commit.message}}"}]}'
         headers: '{"agent-type":"Stream"}'
