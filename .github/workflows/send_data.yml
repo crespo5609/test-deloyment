@@ -5,8 +5,6 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -32,16 +30,13 @@ jobs:
         url: https://stg.insightfinder.com/api/v1/deploymentEventReceive
         # JSON string of data to pass into request
         data: >
-          '{
-            "projectName":"git-action-test",
+          '{"projectName":"git-action-test",
             "userName":"caiTest", 
             "licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685",
-            "deploymentData":[
-              {
+            "deploymentData":
+              [{
                 "instanceName":"TEST", 
                 "timestamp": "${{github.event.repository.pushed_at}}000", 
                 "data":"${{github.event.head_commit.message}}"
-              }
-            ]
-          }'
+              }]}'
         headers: '{"agent-type":"Stream"}'
