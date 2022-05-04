@@ -19,6 +19,7 @@ jobs:
       - name: Logging
         run: |
           echo "${{toJSON(github.event)}}"
+          echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
   
   # This workflow contains a single job called "build"
   curl:
