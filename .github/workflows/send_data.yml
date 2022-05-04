@@ -19,7 +19,7 @@ jobs:
       - name: Logging
         run: |
           echo "${{github.event.head_commit.message}}"
-          echo "${{github.event.repository.pushed_at}}"
+          echo "${{github.event.repository.pushed_at}}000"
   
   # This workflow contains a single job called "build"
   curl:
