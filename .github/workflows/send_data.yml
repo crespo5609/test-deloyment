@@ -9,16 +9,8 @@ on:
     branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:        
-  log-github-event-goodies:
-    name: "LOG Everything on GitHub Event"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Logging
-        run: |
-          echo "${{fromJSON(toJSON(github.event.commits[0]))}}"
-          
-  # This workflow contains a single job called "build"
+jobs:         
+  # This workflow contains a single job to send the commit message to InsightFinder by Post request call
   curl:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -28,6 +20,7 @@ jobs:
       with:
         # URL to send post request to
         url: https://stg.insightfinder.com/api/v1/deploymentEventReceive
-        # JSON string of data to pass into request
-        data: '{"projectName":"git-action-test","userName":"caiTest", "licenseKey":"9dd08c2b4679ee832a3fa2e9dbabd4ddb075685","deploymentData":[{"instanceName":"TEST", "timestamp": "${{github.event.repository.pushed_at}}000", "data":${{toJSON(github.event.commits[0])}}}]}'
+        # JSON string of data to pass into request, including the InsightFinder projectName, userName and the licenseKey
+        # In the deploymentData, you need to set the InstanceName, the timestamp and the data is auto generated
+        data: '{"projectName":"<PROJECT NAME>","userName":"<USERNAME>", "licenseKey":"<LICENSE KEY>","deploymentData":[{"instanceName":"<INSTANCE NAME>", "timestamp": "${{github.event.repository.pushed_at}}000", "data":${{toJSON(github.event.commits[0])}}}]}'
         headers: '{"agent-type":"Stream"}'
