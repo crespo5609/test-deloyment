@@ -19,5 +19,5 @@ jobs:
         url: https://app.insightfinder.com/api/v1/deploymentEventReceive
         # JSON string of data to pass into request, including the InsightFinder projectName, userName and the licenseKey
         # In the deploymentData, you need to set the InstanceName, the timestamp and the data is auto generated
-        data: '{"projectName":"Github-integration","userName":"devsourcedigital", "licenseKey":"ae89febaa538750ffffe6f479228b2200e3f15c2","deploymentData":[{"instanceName":"gke-prod", "timestamp": "${{github.event.repository.pushed_at}}000", "data":${{toJSON(github.event.commits[0])}}}]}'
+        data: '{"projectName":"<PROJECT_NAME>","userName":"<USER_NAME>", "licenseKey":"<LICENSE_KEY>","deploymentData":[{"instanceName":"<INSTANCE_NAME>", "timestamp": "${{github.event.repository.pushed_at}}000", "data":${{toJSON(github.event.commits[0])}}}]}'
         headers: '{"agent-type":"Stream"}'
